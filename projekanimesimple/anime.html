@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniAnimeWeb - Koleksi Anime Favorit Gwehj </title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle, #120012, #1a0030);
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; background-color: #1e003d;
+      position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    header h1 {color: #c084fc; font-size: 28px;}
+    nav a {
+      color: #ddd; margin-left: 20px; text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {color: #c084fc;}
+    .hero {
+      text-align: center; padding: 60px 20px; background-color: #2a004f;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .hero h2 {font-size: 40px; color: #ffccff; margin-bottom: 10px;}
+    .hero p {font-size: 18px; color: #ddd;}
+    .anime-section {
+      padding: 40px 20px; transition: all 0.3s ease;
+    }
+    .anime-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px; margin-top: 20px;
+    }
+    .anime-card {
+      background: linear-gradient(145deg, #1f002f, #2f004c);
+      border-radius: 12px; overflow: hidden;
+      cursor: pointer; transform: scale(1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .anime-card:hover {
+      transform: scale(1.07);
+      box-shadow: 0 8px 20px rgba(128, 0, 128, 0.6);
+    }
+    .anime-card img {
+      width: 100%; height: 280px; object-fit: cover;
+    }
+    .anime-card h3 {
+      padding: 15px; font-size: 18px; text-align: center;
+      color: #ffb6ff;
+    }
+    .video-section {
+      padding: 40px 20px; display: none;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    .video-section h3 {
+      margin-bottom: 10px;
+      color: #c084fc;
+    }
+    .video-wrapper {
+      width: 100%; max-width: 800px; margin: 0 auto;
+    }
+    video {
+      width: 100%; height: 450px; border-radius: 12px;
+      box-shadow: 0 0 20px rgba(200, 0, 255, 0.2);
+    }
+    footer {
+      text-align: center; padding: 20px;
+      background-color: #140026; color: #aaa;
+      margin-top: 40px;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MiniAnimeFlix - @alrzkyy</h1>
+    <nav>
+      <a href="#">Beranda</a>
+      <a href="#anime">Anime</a>
+      <a href="#video">Video</a>
+      <a href="#tentang">Tentang</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Koleksi Anime Favorit</h2>
+    <p>Website Anime Yang Gue Buat ( gbt aja jadi ga full ).</p>
+  </section>
+
+  <section class="anime-section" id="anime">
+    <div class="anime-grid">
+      <div class="anime-card" onclick="tampilkanVideo('K-ON!', 'video/kon.mp4')">
+        <img src="img/kon.jpg" alt="K-ON!" />
+        <h3>K-ON!</h3>
+      </div>
+      <div class="anime-card" onclick="tampilkanVideo('One Piece', 'video/onepiece.mp4')">
+        <img src="img/onepiece.jpg" alt="One Piece" />
+        <h3>One Piece</h3>
+      </div>
+      <div class="anime-card" onclick="tampilkanVideo('Mao Gakuin', 'video/maogakuin.mp4')">
+        <img src="img/maou.jpg" alt="Mao Gakuin" />
+        <h3>Mao Gakuin</h3>
+      </div>
+      <div class="anime-card" onclick="tampilkanVideo('Kage no Jitsu', 'video/kagenojitsu.mp4')">
+        <img src="img/shadow.jpg" alt="Kage no Jitsuryokusha" />
+        <h3>Kage no Jitsuryokusha</h3>
+      </div>
+      <div class="anime-card" onclick="tampilkanVideo('Bocchi the Rock!', 'video/bocchi.mp4')">
+        <img src="img/bocchi.jpg" alt="Bocchi the Rock!" />
+        <h3>Bocchi the Rock!</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section" id="video">
+    <div class="video-wrapper">
+      <h3 id="judul-anime">Judul Anime</h3>
+      <video id="video-player" controls poster="">
+        <source id="video-source" src="" type="video/mp4">
+        Browser kamu tidak mendukung pemutar video.
+      </video>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 AnimeFlix. Dibuat oleh @Alrzkyy. Semua hak dilindungi.
+  </footer>
+
+  <script>
+    function tampilkanVideo(judul, url) {
+      document.getElementById('judul-anime').textContent = judul;
+      document.getElementById('video-source').src = url;
+      document.getElementById('video-player').load();
+      document.getElementById('video').style.display = 'block';
+      document.getElementById('video').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+<script>
+  // Munculkan animasi saat scroll (fade-up)
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('fade-up');
+    });
+  });
+  document.querySelectorAll('.card, #animePlayer, #playlist').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
